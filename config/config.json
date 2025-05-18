@@ -1,10 +1,16 @@
 {
   "development": {
-    "username": "postgres",
-    "password": 2900401278,
-    "database": "gestortareas",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "postgress",
+    "password": "v3TIuluPmlj5Kt4J3T6NbjJAMe0DFqhG",
+    "database": "gestortareas_w585",
+    "host": "dpg-d0kgipogjchc73adcafg-a.oregon-postgres.render.com",
+    "dialect": "postgres", 
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
     "username": "root",
@@ -14,10 +20,16 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgress",
+    "password": "v3TIuluPmlj5Kt4J3T6NbjJAMe0DFqhG",
+    "database": "gestortareas_w585",
+    "host": "dpg-d0kgipogjchc73adcafg-a.oregon-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

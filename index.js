@@ -11,15 +11,18 @@ dotenv.config();
 const app = require("./app"); 
 
 // Configurar Sequelize con variables de entorno
-const sequelize = new Sequelize(
-  process.env.DB_NAME || "gestortareas",
-  process.env.DB_USER || "postgres",
-  process.env.DB_PASSWORD || "2900401278",
-  {
-    host: process.env.DB_HOST || "127.0.0.1",
-    dialect: "postgres",
+
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   }
-);
+});
 
 // Configurar CORS
 const corsOptions = {

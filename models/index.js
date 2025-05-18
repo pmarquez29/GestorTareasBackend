@@ -1,26 +1,22 @@
-'use strict';
-
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const process = require('process');
 const basename = path.basename(__filename);
 const db = {};
 
-// Configurar la conexión a la base de datos usando variables de entorno
-const sequelize = new Sequelize(
-  process.env.DB_NAME || 'gestortareas',    // Nombre de la base de datos
-  process.env.DB_USER || 'postgres',       // Usuario de la base de datos
-  process.env.DB_PASSWORD || '12345678',  // Contraseña de la base de datos
-  {
-    host: process.env.DB_HOST || '127.0.0.1',  // Dirección del host (puedes usar 'localhost' o la IP)
-    dialect: 'postgres',                      // Dialecto de la base de datos (PostgreSQL)
-    logging: false,                           // Desactiva el logging de SQL en consola (opcional)
-    dialectOptions: {
-      ssl: process.env.DB_SSL === 'true' ? { require: true, rejectUnauthorized: false } : false,
-    },
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   }
-);
+});
+
 
 // Leer los archivos de modelos y cargarlos
 fs
